@@ -6,15 +6,18 @@ import { PersistGate } from 'redux-persist/lib/integration/react';
 import { persistor, store } from './redux/store';
 import { ChakraProvider } from '@chakra-ui/react';
 
+import { theme } from './helpers/theme';
+
 import AppRouter from './routers/AppRouter';
 
 import './index.css';
+
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <ChakraProvider>
+        <ChakraProvider theme={theme}>
           <AppRouter />
         </ChakraProvider>
       </PersistGate>
