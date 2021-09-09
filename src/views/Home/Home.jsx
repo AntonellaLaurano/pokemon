@@ -32,7 +32,7 @@ const Home = () => {
 
     const hanldeGenerator = async () => {
         try {
-            const randomNumber = Math.floor(Math.random() * (152 - 1) +1);
+            const randomNumber = Math.floor(Math.random() * (898 - 1) +1);
             const data = await getPokemon(randomNumber);
             setPokemon(data);
             setShowPokemon(true);

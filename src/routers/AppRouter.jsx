@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import PokemonDetails from '../views/PokemonDetails.jsx/DetailsPokemon';
+import PokemonDetails from '../views/PokemonDetails.jsx/PokemonDetails';
 import Home from '../views/Home/Home';
 import YourPokemon from '../views/YourPokemon.jsx/YourPokemon';
 

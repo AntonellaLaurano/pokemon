@@ -1,16 +1,18 @@
 import { types } from '../types';
 
 const initialState = {
-    pokemon: ''
+    pokemon: {},
+    pokemonCharacteristic: {}
 }
 
 export const pokemonReducer = (state = initialState, action) => {
     switch (action.type) {
-        case types.random:
+        case types.details:
             return {
+                ...state,
                 pokemon: action.payload
             };
-
+            
         default:
             return state;
     }

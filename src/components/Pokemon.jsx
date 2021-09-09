@@ -1,5 +1,6 @@
 import React from 'react'
-
+import { useDispatch } from 'react-redux';
+import { pokemonDetails } from '../redux/actions/pokemon';
 import {
     Heading,
     Avatar,
@@ -14,14 +15,16 @@ import {
   } from '@chakra-ui/react';
 
 const Pokemon = ({ pokemon }) => {
+  const dispatch = useDispatch();
+
+
   console.log(pokemon);
   console.log(pokemon.abilities)
-  const img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`;
+  const img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`;
 
   const handleDetails = () => {
-    
+    dispatch(pokemonDetails(pokemon));
   } 
-
 
   return (
         <Center py={6}>
@@ -41,18 +44,18 @@ const Pokemon = ({ pokemon }) => {
                   {pokemon.name}
                 </Heading>
                 <Box w={'90%'}>
-                  <Text>Abilities:</Text>
-                  {
-                    pokemon.abilities.map((ability) => (
-                      <Text key={ability.ability.name} color={'gray.500'}>{ability.ability.name}</Text>
-                    ))
-                  }
-                </Box>
-                <Box w={'90%'}>
                   <Text>Type:</Text>
                   {
                     pokemon.types.map((type) => (
                       <Text key={type.type.name} color={'gray.500'}>{type.type.name}</Text>
+                    ))
+                  }
+                </Box>
+                <Box w={'90%'}>
+                  <Text>Abilities:</Text>
+                  {
+                    pokemon.abilities.map((ability) => (
+                      <Text key={ability.ability.name} color={'gray.500'}>{ability.ability.name}</Text>
                     ))
                   }
                 </Box>
