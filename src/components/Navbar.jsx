@@ -32,7 +32,7 @@ const NavLink = ({ children }) => (
     rounded={'md'}
     _hover={{
       textDecoration: 'none',
-      bg: useColorModeValue('gray.200', 'gray.700'),
+      bg: 'red.900',
     }}
     href={`/${(children.toLowerCase()).replace(/\s+/g, '')}`}>
     {children}
@@ -56,6 +56,8 @@ const NavBar = () => {
               aria-label={'Open Menu'}
               display={{ md: 'none' }}
               onClick={isOpen ? onClose : onOpen}
+              bg={'red.100'}
+              _hover={{ bg: 'red.900' }}
           />
           <HStack spacing={8} alignItems={'center'}>
               <Box><Image src={logo} alt='Logo' h='30px' /></Box>

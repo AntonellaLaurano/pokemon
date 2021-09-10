@@ -14,20 +14,20 @@ const PokemonDetails = () => {
     return (
         <>
             <NavBar />
-            <Center m={'40px'}>
-                <Flex flexDirection={'column'}>
+            <Center>
+                <Flex flexDirection={'column'}  m={'40px'}>
                     <Flex flexDirection={['column', 'row']} justifyContent={'space-between'}  w={'100%'}>
                         <Image boxSize='300px' src={img} alt={pokemon.name} />
                         <Flex flexDirection={'column'} alignItems={'center'} w={['100%', '60%']}>
                             <Text fontSize={'4xl'}>{pokemon.name}</Text>
-                            <Flex flexDirection={['column', 'row']}  justifyContent={'space-between'} w={'100%'} bg={'blue'} color={'white'} p={'40px'} borderRadius={'20px'}>
+                            <Flex flexDirection={['column', 'row']}  justifyContent={'space-between'} w={'100%'} border={'1px solid'} borderColor={'blue'} shadow={'2xl'} p={'20px'} borderRadius={'10px'}>
                                 <Box w='200px'>
-                                    <Text m={'20px'} fontSize={'md'}>Weight: {pokemon.weight} hg</Text>
-                                    <Text m={'20px'} fontSize={'md'}>Height: {pokemon.height} dm</Text>
+                                    <Text m={'20px'} fontSize={'lg'}>Weight: {pokemon.weight} hg</Text>
+                                    <Text m={'20px'} fontSize={'lg'}>Height: {pokemon.height} dm</Text>
                                 </Box>
                                 <Box w='200px'> 
-                                    <Text m={'20px'} fontSize={'md'}>Weight: {pokemon.weight} hg</Text>
-                                    <Text m={'20px'} fontSize={'md'}>Height: {pokemon.height} dm</Text>
+                                    <Text m={'20px'} fontSize={'lg'}>Weight: {pokemon.weight} hg</Text>
+                                    <Text m={'20px'} fontSize={'lg'}>Height: {pokemon.height} dm</Text>
                                 </Box>
                             </Flex>
                         </Flex>
@@ -61,7 +61,7 @@ const PokemonDetails = () => {
                         </Flex>
                     </Box>
                     <Center>
-                        <SimpleGrid minChildWidth='150px' spacing='40px' w={'50%'}>
+                        <SimpleGrid minChildWidth='150px' spacing='40px' w={['100%', '70%']}>
                             {
                                 pokemon.stats.map((stat) => (
                                     <Stats key={stat.stat.name} title={stat.stat.name} stat={stat.base_stat} />
