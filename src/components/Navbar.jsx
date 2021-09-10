@@ -20,6 +20,8 @@ import {
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 
 import logo from '../images/logo.png'
+import { useDispatch } from 'react-redux';
+import { logout } from '../redux/actions/auth';
 
 const Links = ['Home', 'Your Pokemon'];
 
@@ -38,7 +40,12 @@ const NavLink = ({ children }) => (
 );
 
 const NavBar = () => {
+  const dispatch = useDispatch()
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const handleLogout = () => {
+    dispatch(logout());
+  }
 
   return (
     <Box bg={useColorModeValue('red.100', 'red.900')} px={4} color='white'>
@@ -66,7 +73,7 @@ const NavBar = () => {
                       <Avatar size={'sm'} bg={'red.100'} />
                   </MenuButton>
                   <MenuList color='black'>
-                      <MenuItem>Logout</MenuItem>
+                      <MenuItem onClick={handleLogout}>Logout</MenuItem>
                   </MenuList>
               </Menu>
           </Flex>

@@ -6,7 +6,7 @@ import { PersistGate } from 'redux-persist/lib/integration/react';
 import { persistor, store } from './redux/store';
 import { ChakraProvider } from '@chakra-ui/react';
 
-import { theme } from './helpers/theme';
+import { theme } from './theme';
 
 import AppRouter from './routers/AppRouter';
 

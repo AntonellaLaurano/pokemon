@@ -1,6 +1,6 @@
-import React from 'react'
-import { useDispatch } from 'react-redux';
-import { pokemonDetails } from '../redux/actions/pokemon';
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { deletePokemon, pokemonDetails, pokemonList } from '../redux/actions/pokemon';
 import {
     Heading,
     Avatar,
@@ -12,31 +12,44 @@ import {
     Button,
     useColorModeValue,
     Link,
+    Alert,
+    AlertIcon,
   } from '@chakra-ui/react';
+import { checkPokemon } from '../helpers/checkPokemon';
 
-const Pokemon = ({ pokemon }) => {
+const Pokemon = ({ pokemon, type }) => {
   const dispatch = useDispatch();
+  const pokemons = useSelector(state => state.pokemons.pokemons);
 
+  const [message, setMessage] = useState('');
+  const [showMessage, setShowMessage] = useState(false)
+  console.log(showMessage)
 
-  console.log(pokemon);
-  console.log(pokemon.abilities)
   const img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`;
 
   const handleDetails = () => {
     dispatch(pokemonDetails(pokemon));
   } 
 
+  const handleAdd = () => {
+    const value = checkPokemon(pokemon,pokemons)
+    setMessage(value);
+    if( value === 'success') {
+      dispatch(pokemonList(pokemon));
+    }
+    setShowMessage(true);
+  }
+
+  const handleDelete = () => {
+    dispatch(deletePokemon(pokemon.id))
+  }
+
   return (
         <Center py={6}>
-          <Box maxW={'300px'} w={'full'} bg={useColorModeValue('white', 'gray.800')} boxShadow={'2xl'} rounded={'md'} overflow={'hidden'}>
+          <Box maxW={'300px'} w={'full'} bg={useColorModeValue('white', 'gray.800')} boxShadow={'2xl'} rounded={'md'} overflow={'hidden'} >
             <Box h={'80px'} w={'full'} bg={'blue'} />
             <Flex justify={'center'} mt={-12}>
-              <Avatar 
-                size={'2xl'} 
-                css={{border: '2px solid white'}} 
-                name={pokemon.name}
-                src={img}
-                />
+              <Avatar size={'2xl'} css={{border: '2px solid white'}} name={pokemon.name} src={img}/>
             </Flex>
             <Box p={6}>
               <Stack spacing={0} align={'center'} mb={2}>
@@ -66,12 +79,28 @@ const Pokemon = ({ pokemon }) => {
                   </Link>
               </Center>
               <Center>
-                  <Button size={'md'} mt={2} bg={useColorModeValue('#151f21', 'gray.900')} color={'white'} rounded={'md'} _hover={{ transform: 'translateY(-2px)', boxShadow: 'lg', }}>
-                    Add Pokemon
-                  </Button>
+                {
+                  type === 'Add Pokemon' ?
+                    <Button onClick={handleAdd} size={'md'} mt={2} bg={'gray'} color={'white'} rounded={'md'} _hover={{ transform: 'translateY(-2px)', boxShadow: 'lg', }}>
+                      Add Pokemon
+                    </Button>
+                    :
+                    <Button onClick={handleDelete} size={'md'} mt={2} bg={'red.100'} color={'white'} rounded={'md'} _hover={{ transform: 'translateY(-2px)', boxShadow: 'lg', }}>
+                      Delete Pokemon
+                    </Button>
+                }
+                  
               </Center>
-              
             </Box>
+            {
+              showMessage && 
+              <Alert status={message}>
+                <AlertIcon />
+                {
+                  message === 'error' ? 'Pokemon is alredy on his team' : message === 'warning' ? 'Maximum 6 on your team' : 'Pokemon added'
+                }
+              </Alert>
+            }
           </Box>
       </Center>
   )

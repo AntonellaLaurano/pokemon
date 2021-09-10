@@ -6,9 +6,7 @@ export const getPokemon = async (key) => {
         const response = await fetch(url,{
             method: 'GET'
         });
-        console.log(response);
         const pokemon = await response.json(response);
-        console.log(pokemon);
         return pokemon;
     } catch (error) {
         console.log(error);

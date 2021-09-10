@@ -69,7 +69,7 @@ const Home = () => {
                 </Stack>
             </Center>
             {
-                showPokemon && <Pokemon pokemon={pokemon}></Pokemon>
+                showPokemon && <Pokemon pokemon={pokemon} type={'Add Pokemon'}></Pokemon>
             }
         </>
     )

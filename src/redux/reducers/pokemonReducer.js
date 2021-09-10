@@ -2,7 +2,7 @@ import { types } from '../types';
 
 const initialState = {
     pokemon: {},
-    pokemonCharacteristic: {}
+    pokemons: []
 }
 
 export const pokemonReducer = (state = initialState, action) => {
@@ -12,7 +12,21 @@ export const pokemonReducer = (state = initialState, action) => {
                 ...state,
                 pokemon: action.payload
             };
-            
+
+        case types.pokemonList:
+            return {
+                ...state,
+                pokemons: [...state.pokemons, action.payload]
+            }
+        
+        case types.deletePokemon:
+            return {
+                ...state,
+                pokemons: state.pokemons.filter(pokemon => {
+                    return pokemon.id !== action.payload
+                })
+            }
+        
         default:
             return state;
     }
