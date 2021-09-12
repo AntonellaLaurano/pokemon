@@ -1,10 +1,7 @@
 export const usersArray = [
     {
         username: 'maria',
-        password: 'qwqwqw'
-    },
-    {
-        username: 'pedro',
-        password: '1234'
+        password: 'qwqwqw',
+        avatar: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/387.png'
     }
 ]

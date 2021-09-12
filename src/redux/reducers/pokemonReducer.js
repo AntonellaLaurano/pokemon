@@ -1,17 +1,30 @@
 import { types } from '../types';
 
 const initialState = {
+    allPokemon: [],
     pokemon: {},
     pokemons: []
 }
 
 export const pokemonReducer = (state = initialState, action) => {
     switch (action.type) {
+        case types.allPokemon:
+            return {
+                ...state,
+                allPokemon: action.payload
+            }
+
         case types.details:
             return {
                 ...state,
                 pokemon: action.payload
             };
+
+        case types.cleanPokemon:
+            return {
+                ...state,
+                pokemon: action.payload
+            }
 
         case types.pokemonList:
             return {

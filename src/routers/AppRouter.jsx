@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import PublicRouter from './PublicRouter';
 import AuthRouter from './AuthRouter';
@@ -8,9 +8,17 @@ import PrivateRouter from './PrivateRouter';
 import Home from '../views/Home/Home';
 import YourPokemon from '../views/YourPokemon/YourPokemon';
 import PokemonDetails from '../views/PokemonDetails/PokemonDetails'
+import { getAllPokemon } from '../redux/actions/pokemon';
 
 const AppRouter = () => {
+    const dispatch = useDispatch();
     const log = useSelector(state => state.auth.log);
+
+    useEffect(() => {
+        if(log) {
+            dispatch(getAllPokemon(10));
+        }
+    }, [])
 
     return (
         <Router>

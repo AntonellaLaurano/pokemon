@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { deletePokemon, pokemonDetails, pokemonList } from '../redux/actions/pokemon';
 import {
@@ -14,20 +14,23 @@ import {
     Link,
     Alert,
     AlertIcon,
+    useOutsideClick,
   } from '@chakra-ui/react';
 import { checkPokemon } from '../helpers/checkPokemon';
+import { transformUppercase } from '../helpers/transformUppercase';
 
 const Pokemon = ({ pokemon, type }) => {
   const dispatch = useDispatch();
+  const alert = useRef()
   const pokemons = useSelector(state => state.pokemons.pokemons);
 
   const [message, setMessage] = useState('');
-  const [showMessage, setShowMessage] = useState(false)
-  console.log(showMessage)
+  const [showMessage, setShowMessage] = useState(false);
 
   const img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`;
 
   const handleDetails = () => {
+    console.log('aqui')
     dispatch(pokemonDetails(pokemon));
   } 
 
@@ -44,6 +47,11 @@ const Pokemon = ({ pokemon, type }) => {
     dispatch(deletePokemon(pokemon.id))
   }
 
+  useOutsideClick({
+    ref: alert,
+    handler: () => setShowMessage(false)
+  })
+
   return (
         <Center py={6}>
           <Box maxW={'300px'} w={'full'} bg={useColorModeValue('white', 'gray.800')} boxShadow={'2xl'} rounded={'md'} overflow={'hidden'} >
@@ -54,13 +62,13 @@ const Pokemon = ({ pokemon, type }) => {
             <Box p={6}>
               <Stack spacing={0} align={'center'} mb={2}>
                 <Heading fontSize={'2xl'} fontWeight={500} fontFamily={'body'}>
-                  {pokemon.name}
+                  {transformUppercase(pokemon.name)}
                 </Heading>
                 <Box w={'90%'}>
                   <Text>Type:</Text>
                   {
                     pokemon.types.map((type) => (
-                      <Text key={type.type.name} color={'gray.500'}>{type.type.name}</Text>
+                      <Text key={type.type.name} color={'gray.500'}>{transformUppercase(type.type.name)}</Text>
                     ))
                   }
                 </Box>
@@ -68,7 +76,7 @@ const Pokemon = ({ pokemon, type }) => {
                   <Text>Abilities:</Text>
                   {
                     pokemon.abilities.map((ability) => (
-                      <Text key={ability.ability.name} color={'gray.500'}>{ability.ability.name}</Text>
+                      <Text key={ability.ability.name} color={'gray.500'}>{transformUppercase(ability.ability.name)}</Text>
                     ))
                   }
                 </Box>
@@ -94,7 +102,7 @@ const Pokemon = ({ pokemon, type }) => {
             </Box>
             {
               showMessage && 
-              <Alert status={message}>
+              <Alert status={message} ref={alert}>
                 <AlertIcon />
                 {
                   message === 'error' ? 'Pokemon is alredy on his team' : message === 'warning' ? 'Maximum 6 on your team' : 'Pokemon added'

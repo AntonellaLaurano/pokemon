@@ -22,6 +22,8 @@ import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import logo from '../images/logo.png'
 import { useDispatch } from 'react-redux';
 import { logout } from '../redux/actions/auth';
+import { cleanPokemon } from '../redux/actions/pokemon';
+import { useSelector } from 'react-redux';
 
 const Links = ['Home', 'Your Pokemon'];
 
@@ -41,10 +43,12 @@ const NavLink = ({ children }) => (
 
 const NavBar = () => {
   const dispatch = useDispatch()
+  const img = useSelector(state => state.auth.user.avatar)
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleLogout = () => {
     dispatch(logout());
+    dispatch(cleanPokemon());
   }
 
   return (
@@ -72,7 +76,7 @@ const NavBar = () => {
           <Flex alignItems={'center'}>
               <Menu>
                   <MenuButton as={Button} rounded={'full'} variant={'link'} cursor={'pointer'} minW={0}>
-                      <Avatar size={'sm'} bg={'red.100'} />
+                      <Avatar src={img && img} size={'sm'} bg={'red.100'} />
                   </MenuButton>
                   <MenuList color='black'>
                       <MenuItem onClick={handleLogout}>Logout</MenuItem>

@@ -6,12 +6,9 @@ import {
     FormControl,
     FormLabel,
     Input,
-    Checkbox,
     Stack,
-    Link,
     Button,
     Heading,
-    Text,
     useColorModeValue,
     InputGroup,
     InputRightElement,
@@ -38,11 +35,9 @@ const Login = () => {
   const handleClick = () => setShow(!show)
 
   const handleChange = (e) => {
-    console.log(e.target.value);
-
     setUser({
       ...user,
-      [e.target.name]:e.target.value
+      [e.target.name]: e.target.value
     });
   }
 
@@ -54,7 +49,7 @@ const Login = () => {
     if(comparativeUser){
       if(comparativeUser.password === user.password) {
           console.log('correcto')
-          dispatch(login(user));
+          dispatch(login(comparativeUser));
       } else {
           console.log('contraseña incorrecta');
       }
@@ -67,10 +62,7 @@ const Login = () => {
       <Flex minH={'100vh'} align={'center'} justify={'center'} bg={useColorModeValue('gray.50', 'gray.800')}>
       <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
         <Stack align={'center'}>
-          <Heading fontSize={'4xl'}>Sign in to your account</Heading>
-          <Text fontSize={'lg'} color={'gray.600'}>
-            to enjoy all of our cool <Link color={'blue.400'}>features</Link> ✌️
-          </Text>
+          <Heading fontSize={'4xl'}>Sign in to your account</Heading>s
         </Stack>
         <Box
           rounded={'lg'}
@@ -78,13 +70,13 @@ const Login = () => {
           boxShadow={'lg'}
           p={8}>
           <Stack spacing={4}>
-            <Formik >
+            <Formik>
               <Form onSubmit={handleLogin}>
-                <FormControl id="email">
+                <FormControl id="email" mb={'10px'}>
                   <FormLabel>Username</FormLabel>
                   <Input onChange={handleChange} value={username} name='username' type="text" placeholder="Enter username" />
                 </FormControl>
-                <FormControl id="password">
+                <FormControl id="password" mb={'10px'}>
                   <FormLabel>Password</FormLabel>
                   <InputGroup size="md">
                     <Input onChange={handleChange} value={password} name='password' pr="4.5rem" type={show ? "text" : "password"} placeholder="Enter password"/>
@@ -95,10 +87,7 @@ const Login = () => {
                     </InputRightElement>
                   </InputGroup>
                 </FormControl>
-                <Stack spacing={10}>
-                  <Stack direction={{ base: 'column', sm: 'row' }} align={'start'} justify={'space-between'}>
-                    <Checkbox>Remember me</Checkbox>
-                  </Stack>
+                <Stack spacing={10} mt={'30px'}>
                   <Button type='submit' bg={'blue'} color={'white'} _hover={{ bg: 'blue.500'}}>
                     Sign in
                   </Button>
