@@ -3,7 +3,7 @@
  
  const Stats = ({ title, stat, icon }) => {
     return (
-      <Stat px={{ base: 2, md: 4 }} py='5' shadow='xl' border='1px solid' borderColor='blue' rounded='lg' bg='white'>
+      <Stat px={{ base: 2, md: 4 }} py='5' shadow='xl' rounded='lg' bg='white' minW='120px'>
         <Flex justifyContent='space-between'>
           <Box pl={{ base: 2, md: 4 }}>
             <StatLabel fontWeight='medium' isTruncated>

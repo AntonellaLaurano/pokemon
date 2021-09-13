@@ -39,49 +39,49 @@ const PokemonDetails = () => {
             {
                 flag &&
                 <Center>
-                    <Flex flexDirection='column'  m='40px'>
-                        <Flex flexDirection={['column', 'row']} justifyContent='space-between'  w='100%'>
+                    <Flex flexDirection='column'  m='40px' bg='whiteTransparent' p='40px' borderRadius='15px' w={['100%', '70%']}>
+                        <Flex flexDirection={['column', 'column', 'column', 'row']} justifyContent='space-around' alignItems='center'  w='100%'>
                             <Image boxSize='300px' src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`} alt={pokemon.name} />
-                            <Flex flexDirection='column' alignItems='center' w={['100%', '60%']}>
-                                <Text fontSize='4xl'>{transformUppercase(pokemon.name)}</Text>
-                                <Flex flexDirection={['column', 'row']}  justifyContent='space-between' w='100%' border='1px solid' borderColor='blue' shadow='2xl' p='20px' borderRadius='10px' bg='white'>
-                                    <Box w='200px'>
-                                        <Text m='20px' fontSize='lg'>Weight: {(pokemon.weight)} hg</Text>
-                                        <Text m='20px' fontSize='lg'>Height: {pokemon.height} dm</Text>
-                                    </Box>
+                            <Flex flexDirection='column' alignItems='center' w={['100%', '70%', '40%']}>
+                                <Text fontSize='4xl' color='white'>{transformUppercase(pokemon.name)}</Text>
+                                <Flex flexDirection='column'  justifyContent='space-between' alignItems='center' w='100%' shadow='2xl' p='20px' borderRadius='10px' bg='white'>
+                                    <Text m='20px' fontSize='lg'>Weight: {(pokemon.weight)} hg</Text>
+                                    <Text m='20px' fontSize='lg'>Height: {pokemon.height} dm</Text>
                                 </Flex>
                             </Flex>
                         </Flex>
-                        <Box mt='10px'>
-                            <Text mb='5px' fontSize='3xl'>Type</Text>
-                            <Flex flexDirection='row'>
-                                {
-                                    pokemon.types.map((type) => (
-                                        <Box key={type.type.name} w='100px' h='30px' p='5px' bg='yellow' borderRadius='10px' m='5px' color='blue'>
-                                            <Center>
-                                                {transformUppercase(type.type.name)}
-                                            </Center>
-                                        </Box>
-                                    ))
-                                }
-                            </Flex>
-                        </Box>
-                        <Box mt='20px' mb='30px'>
-                            <Text mb='5px' fontSize='3xl'>Abilities</Text>
-                            <Flex flexDirection={'row'}>
-                                {
-                                    pokemon.abilities.map((ability) => (
-                                        <Box key={ability.ability.name} w='120px' h='30px' p='5px' bg='yellow' borderRadius='10px' m='5px' color='blue'>
-                                            <Center>
-                                                {transformUppercase(ability.ability.name)}
-                                            </Center>
-                                        </Box>
-                                    ))
-                                }
-                            </Flex>
-                        </Box>
+                        <Flex flexDirection={['column', 'row']} justifyContent='space-around' alignItems='center' mt='40px' mb='50px'>
+                            <Box>
+                                <Text mb='5px' fontSize='3xl' color='white'>Type</Text>
+                                <Flex flexDirection='row'>
+                                    {
+                                        pokemon.types.map((type) => (
+                                            <Box key={type.type.name} w='100px' h='30px' p='5px' bg='yellow' borderRadius='10px' m='5px' color='blue'>
+                                                <Center>
+                                                    {transformUppercase(type.type.name)}
+                                                </Center>
+                                            </Box>
+                                        ))
+                                    }
+                                </Flex>
+                            </Box>
+                            <Box>
+                                <Text mb='5px' fontSize='3xl' color='white'>Abilities</Text>
+                                <Flex flexDirection={'row'}>
+                                    {
+                                        pokemon.abilities.map((ability) => (
+                                            <Box key={ability.ability.name} w='120px' h='30px' p='5px' bg='yellow' borderRadius='10px' m='5px' color='blue'>
+                                                <Center>
+                                                    {transformUppercase(ability.ability.name)}
+                                                </Center>
+                                            </Box>
+                                        ))
+                                    }
+                                </Flex>
+                            </Box>
+                        </Flex>
                         <Center>
-                            <SimpleGrid minChildWidth='110px' spacing='40px' w='100%'>
+                            <SimpleGrid minChildWidth='120px' spacing='40px' w={['100%', ' 70%', '60%', '80%', '40%']}>
                                 {
                                     pokemon.stats.map((stat) => (
                                         <Stats key={stat.stat.name} title={transformUppercase(stat.stat.name)} stat={stat.base_stat}/>

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { Button, Center, Input, Stack, useColorModeValue, Box, Text, HStack, useOutsideClick, VStack } from '@chakra-ui/react'
+import { Button, Center, Input, Stack, useColorModeValue, Box, Text, HStack, useOutsideClick, VStack, Image, Flex } from '@chakra-ui/react'
 
 import NavBar from '../../components/Navbar'
 import Pokemon from '../../components/Pokemon'
@@ -32,7 +32,7 @@ const Home = () => {
     const filtrar = (search) => {
         var cont = 0;
         var searchResult = data.filter((element) => {
-            if (element.name.toString().toLowerCase().includes(search.toLowerCase()) && search !== '' && cont < 5) {
+            if (element.name.toString().toLowerCase().includes(search.toLowerCase()) && search !== '' && cont < 4) {
                 cont ++
                 return element
             } else {
@@ -90,9 +90,9 @@ const Home = () => {
     return (
         <Box h='100vh' bgGradient='linear(to-r, cyan, blue)' minH='100vh'>
             <NavBar />
-            <Center>
-                <VStack>
-                    <Center m='50px'>
+            <Center minH='90vh'>
+                <VStack bg='whiteTransparent' borderRadius='20px' p='20px'>
+                    <Center m='80px'>
                         <HStack>
                             <Box>
                                 <Input type='text'
@@ -108,11 +108,11 @@ const Home = () => {
                                     name='name'
                                     onChange={hanldeChange}
                                     autoComplete='off'
-                                    w={['150px', '200px']}
+                                    w={['150px', '200px', '300px']}
                                 />
                                 {
                                     flag && pokemonL.length !== 0 &&
-                                    <Box ref={autocomplete} position='absolute' w={['150px', '200px']} p='20px' boxShadow='2xl' rounded='md' bg='white'>
+                                    <Box ref={autocomplete} position='absolute' w={['150px', '200px', '300px']} p='20px' boxShadow='2xl' rounded='md' bg='white'>
                                         {   
                                             pokemonL.map(element => (
                                                 <Text key={element.name} cursor='pointer' onClick={() => handleSelected(element.name)}>{transformUppercase(element.name)}</Text>
@@ -134,7 +134,10 @@ const Home = () => {
                             <Pokemon pokemon={pokemon} type='Add Pokemon'></Pokemon> 
                         :
                             <Center h='50%'>
-                                <Text fontSize='3xl' w='70%' textAlign='center' mt='50px' bg='white' color='blue' p='25px' borderRadius='20px'>Search or generate a pokemon for your team</Text>
+                                <Flex flexDirection='column' alignItems='center' w='70%' textAlign='center' color='white' pb='50px'>
+                                    <Text fontSize='3xl'>Search or generate a pokemon for your team</Text>
+                                    <Image w='70px' m='10px' src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/25.gif' alt='Pikachu'></Image>
+                                </Flex>
                             </Center>
                     }
                 </VStack>

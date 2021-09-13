@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import {  Box, Center, SimpleGrid, Text } from '@chakra-ui/react'
+import {  Box, Center, Flex, Image, SimpleGrid, Text } from '@chakra-ui/react'
 
 import NavBar from '../../components/Navbar'
 import Pokemon from '../../components/Pokemon'
@@ -24,9 +24,12 @@ const YourPokemon = () => {
                     </SimpleGrid>
                 </Center>
                     
-                :
-                    <Center h='50%'>
-                        <Text fontSize='3xl' w='70%' textAlign='center' mt='50px' bg='white' color='blue' p='25px' borderRadius='20px'>Add a Pokemon to your team</Text>
+                :   
+                    <Center minH='60vh'>
+                        <Flex flexDirection='column' alignItems='center' w={['90%','50%']} textAlign='center' mt='50px' bg='whiteTransparent' color='white' p='25px' borderRadius='20px'>
+                            <Text fontSize='3xl'>Add a Pokemon to your team</Text>
+                            <Image w='70px' m='10px' src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/54.gif' alt='Psyduck'></Image>
+                        </Flex>
                     </Center>
             }
         </Box>
