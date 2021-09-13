@@ -1,21 +1,8 @@
 import React, { useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { deletePokemon, pokemonList } from '../redux/actions/pokemon';
-import {
-    Heading,
-    Avatar,
-    Box,
-    Center,
-    Flex,
-    Text,
-    Stack,
-    Button,
-    useColorModeValue,
-    Link,
-    Alert,
-    AlertIcon,
-    useOutsideClick,
-  } from '@chakra-ui/react';
+import { Heading, Avatar, Box,  Center,  Flex, Text, Stack, Button, useColorModeValue, Link,  Alert, AlertIcon, useOutsideClick } from '@chakra-ui/react';
+
 import { checkPokemon } from '../helpers/checkPokemon';
 import { transformUppercase } from '../helpers/transformUppercase';
 

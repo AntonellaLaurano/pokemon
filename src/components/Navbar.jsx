@@ -1,29 +1,13 @@
 import React from 'react';
-
-import {
-  Box,
-  Flex,
-  Avatar,
-  HStack,
-  Link,
-  IconButton,
-  Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  useDisclosure,
-  useColorModeValue,
-  Stack,
-  Image,
-} from '@chakra-ui/react';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { Box, Flex, Avatar, HStack, Link, IconButton, Button, Menu, MenuButton, MenuList, MenuItem, useDisclosure, useColorModeValue, Stack, Image } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 
-import logo from '../images/logo.png'
-import { useDispatch } from 'react-redux';
 import { logout } from '../redux/actions/auth';
 import { cleanPokemon } from '../redux/actions/pokemon';
-import { useSelector } from 'react-redux';
+
+import logo from '../images/logo.png'
 
 const Links = ['Home', 'Your Pokemon'];
 

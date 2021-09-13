@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import PublicRouter from './PublicRouter';
@@ -27,6 +27,7 @@ const AppRouter = () => {
                 <PrivateRouter exact path='/home' log={log} component={Home} />
                 <PrivateRouter exact path='/yourpokemon' log={log} component={YourPokemon} />
                 <PrivateRouter exact path='/pokemondetails/:id' log={log} component={PokemonDetails} />
+                <Redirect path='/**' to='/'/>
             </Switch>
         </Router>
     )

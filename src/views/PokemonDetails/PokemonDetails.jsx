@@ -1,16 +1,17 @@
-import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useEffect, useState  } from 'react'
+import { useHistory, useParams } from 'react-router-dom'
 import { Box, Center, Flex, Image, SimpleGrid, Text } from '@chakra-ui/react'
 
 import NavBar from '../../components/Navbar'
 import Stats from '../../components/Stats'
 import { transformUppercase } from '../../helpers/transformUppercase'
 import { getPokemon } from '../../helpers/get/getPokemon'
-import { useState } from 'react'
 
 const PokemonDetails = () => {
-    const { id } = useParams()
-    const [pokemon, setPokemon] = useState({})
+    const { id } = useParams();
+    let history = useHistory();
+
+    const [pokemon, setPokemon] = useState({});
     const [flag, setFlag] = useState(false);
 
     useEffect(() => {
@@ -23,6 +24,8 @@ const PokemonDetails = () => {
                 } else {
                     setFlag(false);
                 }
+            } else {
+                history.push('/home')
             }
         }
         pokemonDetails();

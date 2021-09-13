@@ -3,11 +3,10 @@ import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/lib/integration/react';
-import { persistor, store } from './redux/store';
 import { ChakraProvider } from '@chakra-ui/react';
 
+import { persistor, store } from './redux/store';
 import { theme } from './theme';
-
 import AppRouter from './routers/AppRouter';
 
 import './index.css';

@@ -1,11 +1,5 @@
  import React from 'react'
- import {
-    Box,
-    Flex,
-    Stat,
-    StatLabel,
-    StatNumber,
-  } from '@chakra-ui/react';
+ import { Box, Flex, Stat, StatLabel, StatNumber } from '@chakra-ui/react';
  
  const Stats = ({ title, stat, icon }) => {
     return (

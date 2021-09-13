@@ -3,8 +3,9 @@ import { useSelector } from 'react-redux'
 import { Button, Center, Input, Stack, useColorModeValue, Box, Text, HStack, useOutsideClick, VStack } from '@chakra-ui/react'
 
 import NavBar from '../../components/Navbar'
-import { getPokemon } from '../../helpers/get/getPokemon'
 import Pokemon from '../../components/Pokemon'
+import { getPokemon } from '../../helpers/get/getPokemon'
+
 import { transformUppercase } from '../../helpers/transformUppercase'
 
 const Home = () => {
