@@ -53,19 +53,19 @@ const NavBar = () => {
 
   return (
     <Box bg={useColorModeValue('red.100', 'red.900')} px={4} color='white'>
-      <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
+      <Flex h={16} alignItems='center' justifyContent='space-between'>
           <IconButton 
-              size={'md'} 
+              size='md' 
               icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-              aria-label={'Open Menu'}
+              aria-label='Open Menu'
               display={{ md: 'none' }}
               onClick={isOpen ? onClose : onOpen}
-              bg={'red.100'}
+              bg='red.100'
               _hover={{ bg: 'red.900' }}
           />
-          <HStack spacing={8} alignItems={'center'}>
+          <HStack spacing={8} alignItems='center'>
               <Box><Image src={logo} alt='Logo' h='30px' /></Box>
-              <HStack as={'nav'} spacing={4} display={{ base: 'none', md: 'flex' }}>
+              <HStack as='nav' spacing={4} display={{ base: 'none', md: 'flex' }}>
                   {
                     Links.map((link) => (
                         <NavLink key={link}>{link}</NavLink>
@@ -75,8 +75,8 @@ const NavBar = () => {
           </HStack>
           <Flex alignItems={'center'}>
               <Menu>
-                  <MenuButton as={Button} rounded={'full'} variant={'link'} cursor={'pointer'} minW={0}>
-                      <Avatar src={img && img} size={'sm'} bg={'red.100'} />
+                  <MenuButton as={Button} rounded='full' variant='link' cursor='pointer' minW={0}>
+                      <Avatar src={img && img} size='sm' bg='red.100' />
                   </MenuButton>
                   <MenuList color='black'>
                       <MenuItem onClick={handleLogout}>Logout</MenuItem>

@@ -5,23 +5,19 @@
     Stat,
     StatLabel,
     StatNumber,
-    useColorModeValue,
   } from '@chakra-ui/react';
  
  const Stats = ({ title, stat, icon }) => {
     return (
-      <Stat px={{ base: 2, md: 4 }} py={'5'} shadow={'xl'} border={'1px solid'} borderColor={'blue'} rounded={'lg'}>
-        <Flex justifyContent={'space-between'}>
+      <Stat px={{ base: 2, md: 4 }} py='5' shadow='xl' border='1px solid' borderColor='blue' rounded='lg' bg='white'>
+        <Flex justifyContent='space-between'>
           <Box pl={{ base: 2, md: 4 }}>
-            <StatLabel fontWeight={'medium'} isTruncated>
+            <StatLabel fontWeight='medium' isTruncated>
               {title}
             </StatLabel>
-            <StatNumber fontSize={'2xl'} fontWeight={'medium'}>
+            <StatNumber fontSize='2xl' fontWeight='medium'>
               {stat}
             </StatNumber>
-          </Box>
-          <Box my={'auto'} color={useColorModeValue('gray.800', 'gray.200')} alignContent={'center'}>
-            {icon}
           </Box>
         </Flex>
       </Stat>

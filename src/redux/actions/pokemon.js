@@ -8,13 +8,11 @@ export const getAllPokemon = (limit) => {
             method: 'GET'
         });
         const data = await response.json();
-        const dataP = [];
-        data.results.map((element) => {
-            dataP.push({
-                name: element.name,
-            });
+        const dataP = data.results.map(element => {
+            return {
+                name: element.name
+            }
         });
-        console.log(dataP)
         return dispatch(allPokemon(dataP));
     }
 }
@@ -26,17 +24,10 @@ export const allPokemon = (allPokemon) => {
     }
 }
 
-export const pokemonDetails = (pokemon) => {
-    return {
-        type: types.details,
-        payload: pokemon
-    }
-}
-
 export const cleanPokemon = () => {
     return {
         type: types.cleanPokemon,
-        payload: {}
+        payload: []
     }
 }
 

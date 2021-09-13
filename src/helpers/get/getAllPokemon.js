@@ -7,7 +7,6 @@ export const getAllPokemon = async (limit) => {
             method: 'GET'
         });
         const allPokemon = await response.json(response);
-        console.log(allPokemon)
         return allPokemon.results;
     } catch (error) {
         console.log(error.message);

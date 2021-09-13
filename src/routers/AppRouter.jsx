@@ -16,9 +16,9 @@ const AppRouter = () => {
 
     useEffect(() => {
         if(log) {
-            dispatch(getAllPokemon(10));
+            dispatch(getAllPokemon(898));
         }
-    }, [])
+    }, [log, dispatch])
 
     return (
         <Router>
@@ -26,7 +26,7 @@ const AppRouter = () => {
                 <PublicRouter exact path='/' log={log} component={AuthRouter} />
                 <PrivateRouter exact path='/home' log={log} component={Home} />
                 <PrivateRouter exact path='/yourpokemon' log={log} component={YourPokemon} />
-                <PrivateRouter exact path='/pokemondetails' log={log} component={PokemonDetails} />
+                <PrivateRouter exact path='/pokemondetails/:id' log={log} component={PokemonDetails} />
             </Switch>
         </Router>
     )
