@@ -92,7 +92,6 @@ const PokemonDetails = () => {
                     </Flex>
                 </Center>
             }
-            
         </Box>
     )
 }
