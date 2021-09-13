@@ -10,7 +10,7 @@ const YourPokemon = () => {
     const team = useSelector(state => state.pokemons.pokemons);
 
     return (
-        <Box bgGradient='linear(to-r, cyan, blue)'>
+        <Box bgGradient='linear(to-r, cyan, blue)' minH='100vh'>
             <NavBar />
             {
                 team.length !== 0 ?

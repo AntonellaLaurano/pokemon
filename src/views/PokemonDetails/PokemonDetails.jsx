@@ -34,7 +34,7 @@ const PokemonDetails = () => {
 
 
     return (
-        <Box bgGradient='linear(to-r, cyan, blue)'>
+        <Box bgGradient='linear(to-r, cyan, blue)' minH='100vh'>
             <NavBar />
             {
                 flag &&

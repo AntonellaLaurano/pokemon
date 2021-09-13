@@ -88,7 +88,7 @@ const Home = () => {
     
 
     return (
-        <Box h='100vh' bgGradient='linear(to-r, cyan, blue)'>
+        <Box h='100vh' bgGradient='linear(to-r, cyan, blue)' minH='100vh'>
             <NavBar />
             <Center>
                 <VStack>
